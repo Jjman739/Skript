@@ -1,4 +1,9 @@
-This fork is for damage causes for personal use.
+# About this fork
+
+This fork is to support custom damage causes. Please follow the following best practice to avoid bugs:
+
+* **Before processing damage events, make sure the damage cause is *NOT* "unknown".** Otherwise, the damage will be processed twice. While this bug existed in a form before Skript 2.6, this fork preserves and exacerbates the issue. Pre-2.6, damage events would be called twice, but they would be independent of each other (except cancelling.) In this fork, the first call uses the proper damage type, and the second call applies the damage itself using the final damage number from the first.
+* **Do not call damage effects without a damage cause, or with "unknown" damage cause.** If you are doing the above, this will bypass your damage processing. Sometimes you'll want this, but if you're going to do so, make sure you know what you're doing.
 
 # Skript [![Build Status](https://travis-ci.org/SkriptLang/Skript.svg?branch=master)](https://travis-ci.org/SkriptLang/Skript)
 Skript is a plugin for Paper/Spigot, which allows server owners and other people
