@@ -80,13 +80,16 @@ public abstract class HealthUtils {
 	 * @param d Amount of hearts to damage
 	 */
 	public static void damage(final Damageable e, final double d) {
+		damage(e, d, DamageCause.CUSTOM);
+	}
+	public static void damage(final Damageable e, final double d, final DamageCause cause) {
 		if (d < 0) {
 			heal(e, -d);
 			return;
 		}
 		double damageAmount = d * 2;
 		if (!SkriptConfig.disableDamageCancelChecking.value()) {
-			EntityDamageEvent event = new EntityDamageEvent(e, e.getLastDamageCause().getCause(), d * 2);
+			EntityDamageEvent event = new EntityDamageEvent(e, cause, d * 2);
 			Bukkit.getPluginManager().callEvent(event);
 			if (event.isCancelled())
 				return;
