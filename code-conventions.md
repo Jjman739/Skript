@@ -107,9 +107,10 @@ Your comments should look something like these:
 ```
 
 ## Language Features
-* Java 8 source and binary compatibility, even though compiling Skript requires Java 16
+* Java 8 source and binary compatibility
+  - JDK 8 must be enough to develop Skript
   - Users must not need JRE newer than version 8
-* Versions up to and including Java 16 should work too
+* Java 9 and 10 must also work
   - Absolutely no dirty deep reflection hacks
 * It is recommended to make fields final, if they are effectively final
   - Performance impact is be minimal, but it makes code cleaner
