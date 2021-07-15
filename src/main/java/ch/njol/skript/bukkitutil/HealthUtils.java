@@ -88,13 +88,11 @@ public abstract class HealthUtils {
 			return;
 		}
 		double damageAmount = d * 2;
-		if (!SkriptConfig.disableDamageCancelChecking.value()) {
-			EntityDamageEvent event = new EntityDamageEvent(e, cause, d * 2);
-			Bukkit.getPluginManager().callEvent(event);
-			if (event.isCancelled())
-				return;
-			damageAmount = event.getFinalDamage();
-		}
+		EntityDamageEvent event = new EntityDamageEvent(e, cause, d * 2);
+		Bukkit.getPluginManager().callEvent(event);
+		if (event.isCancelled())
+			return;
+		damageAmount = event.getFinalDamage();
 		e.damage(damageAmount);
 	}
 	/** Heal an entity
